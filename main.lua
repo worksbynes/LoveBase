@@ -11,9 +11,10 @@ end
 
 function love.load()
 	resizeWindow(SCALING_FACTOR)
+	love.graphics.setDefaultFilter("nearest", "nearest")
 end
 
-function love.draw()
+function love.draw(dt)
 	displayFPS()
 end
 
