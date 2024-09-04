@@ -1,7 +1,12 @@
 Object = require("lib/classic")
 
+local windowWidth = VIRTUAL_WIDTH
+local windowHeight = VIRTUAL_HEIGHT
+
 local function resizeWindow(scalingFactor)
-	love.window.setMode(scalingFactor * VIRTUAL_WIDTH, scalingFactor * VIRTUAL_HEIGHT)
+	windowWidth = scalingFactor * VIRTUAL_WIDTH
+	windowHeight = scalingFactor * VIRTUAL_HEIGHT
+	love.window.setMode(windowWidth, windowHeight)
 end
 
 local function displayFPS()
@@ -12,6 +17,10 @@ end
 function love.load()
 	resizeWindow(SCALING_FACTOR)
 	love.graphics.setDefaultFilter("nearest", "nearest")
+end
+
+function love.update(dt)
+	--TODO:
 end
 
 function love.draw(dt)
