@@ -23,7 +23,7 @@ function love.update(dt)
 	--TODO:
 end
 
-function love.draw(dt)
+function love.draw()
 	displayFPS()
 end
 
