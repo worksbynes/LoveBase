@@ -1,9 +1,8 @@
-VIRTUAL_WIDTH = 320
-VIRTUAL_HEIGHT = 180
-SCALING_FACTOR = 3
+WINDOW_WIDTH = 1280
+WINDOW_HEIGHT = 720
+VIRTUAL_WIDTH = 512
+VIRTUAL_HEIGHT = 288
 
 function love.conf(t)
 	t.console = true
-	t.window.width = VIRTUAL_WIDTH
-	t.window.height = VIRTUAL_HEIGHT
 end

@@ -1,13 +1,5 @@
 Object = require("lib/classic")
-
-local windowWidth = VIRTUAL_WIDTH
-local windowHeight = VIRTUAL_HEIGHT
-
-local function resizeWindow(scalingFactor)
-	windowWidth = scalingFactor * VIRTUAL_WIDTH
-	windowHeight = scalingFactor * VIRTUAL_HEIGHT
-	love.window.setMode(windowWidth, windowHeight)
-end
+Push = require("lib/push")
 
 local function displayFPS()
 	love.graphics.setColor(0, 255, 0, 255)
@@ -15,8 +7,16 @@ local function displayFPS()
 end
 
 function love.load()
-	resizeWindow(SCALING_FACTOR)
 	love.graphics.setDefaultFilter("nearest", "nearest")
+	Push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
+		vsync = true,
+		fullscreen = false,
+		resizable = true,
+	})
+end
+
+function love.resize(w, h)
+	Push:resize(w, h)
 end
 
 function love.update(dt)
@@ -24,7 +24,9 @@ function love.update(dt)
 end
 
 function love.draw()
+	Push:start()
 	displayFPS()
+	Push:finish()
 end
 
 function love.keypressed(key)
